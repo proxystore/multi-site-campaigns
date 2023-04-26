@@ -13,23 +13,26 @@ mpnn_file=$data_dir/initial-model/networks/gpu_b16_n256_Rsum_cbd46e/model.h5
 #  de92a1ac-4118-48a2-90ac-f43a59298634: Venti
 #       --ml-endpoint de92a1ac-4118-48a2-90ac-f43a59298634 \
 #       --qc-endpoint b9c5db67-cc17-4708-be97-5274443d789a \
+# --simulate-ps-backend zmq \
+# --infer-ps-backend endpoint \
+# --train-ps-backend endpoint \
+# --simulate-ps-backend redis \
+
+ulimit -n 2048
 
 python run.py \
+       --redishost 10.236.1.190 \
        --redisport 7486 \
        --training-set $data_dir/training-data.json \
        --mpnn-model-path $mpnn_file \
        --model-count 8 \
        --num-epochs 128 \
        --search-space $search_space \
-       --infer-ps-backend redis \
-       --train-ps-backend redis \
-       --simulate-ps-backend file \
-       --ps-file-dir proxy-store-scratch \
        --ps-globus-config globus_config.json \
-       --num-qc-workers 8 \
+       --ps-endpoints eed2ac9a-6dbd-4a12-8e58-25be0f6eec2d 4bad5404-f003-4d9a-b19f-b482b8004f80 \
+       --num-qc-workers 2048 \
        --retrain-frequency 1 \
        --molecules-per-ml-task 50000 \
-       --search-size 512 \
+       --search-size 8192 \
        --ps-threshold 10000 \
-       --use-parsl \
-       --no-proxystore
+       --use-parsl

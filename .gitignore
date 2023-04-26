@@ -1,0 +1,14 @@
+# Run files
+redis.out
+[0-9]*.cobaltlog
+[0-9]*.error
+[0-9]*.output
+
+# Library Files
+.sccnotconverged
+.ipynb_checkpoints
+
+# Python files
+__pycache__
+cmd_parsl.*.sh
+*.egg-info/
