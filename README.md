@@ -1,5 +1,7 @@
 # Steering Computational Campaigns across Multiple, Hetereogenous Systems
 
+[![DOI](https://zenodo.org/badge/624905033.svg)](https://zenodo.org/badge/latestdoi/624905033)
+
 This repository contains the software used to evaluate the performance of different
 systems for executing a computational campaigns across multiple computing sites with different hardware.
 As [better described in the associated paper](#), the need to deploy scientific workflows across multiple
